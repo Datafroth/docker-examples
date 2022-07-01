@@ -1,12 +1,23 @@
-# Docker Examples
-These examples shows how to use the [ROOT Docker containers](https://hub.docker.com/r/rootproject/root-ubuntu16/) in different use-cases. It is recommended to clone this repository when following these examples. These examples can also serve as basline for how other ROOT Dockerfiles are created as they strive to follow [best practices in regards to Dockerfiles](https://docs.docker.com/engine/userguide/eng-image/dockerfile_best-practices/).
+## Hello-world
+This example shows how to create an image containing a simple macro printing a hello world in ROOT. It demonstrates how to extend the dockerfile on a basic level for distribution.
 
-### Hello-world
-Shows how to create a basic Dockerfile together with a hello world macro.
-
-### Persistence
-Shows how to persist data in mounted directories.
-
-### Notebooks
-Example on how to craete a Docker container that will host a notebook locally.
-
+### Building
+To build the container:
+```
+$ docker build -t root-hello-world .
+```
+### Running
+To run the container:
+```
+$ docker run --rm -it root-hello-world
+```
+This will run the command specified with the CMD directive in the Dockerfile (`root.exe -q hello.C`).
+It is also possible to specify the entire command to run in ROOT:
+```
+$ docker run --rm -it root-hello-world root.exe hello.C
+```
+This will run hello.C and leave the user in the ROOT prompt.
+Another possibility is to open a bash shell inside the hello-world image:
+```
+$ docker run --rm -it root-hello-world bash
+```
