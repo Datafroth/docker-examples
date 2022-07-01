@@ -1,4 +1,4 @@
-FROM rootproject/root-ubuntu16
+FROM ubuntu
 
 # Run the following commands as super user (root):
 USER root
